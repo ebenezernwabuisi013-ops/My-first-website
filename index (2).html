@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eben-Jesus Banking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 font-sans text-slate-900">
+
+    <div id="login-page" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-600 to-blue-800">
+        <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-emerald-600">Eben-Jesus</h1>
+                <p class="text-slate-500">Secure Online Banking</p>
+            </div>
+            <form id="login-form" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Email Address</label>
+                    <input type="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none transition" placeholder="name@email.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Password</label>
+                    <input type="password" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 outline-none transition" placeholder="••••••••">
+                </div>
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg transition-all transform active:scale-95 shadow-lg">
+                    Sign In to Account
+                </button>
+            </form>
+            <p class="text-center text-xs text-slate-400 mt-6">Protected by 256-bit AES Encryption</p>
+        </div>
+    </div>
+
+    <div id="dashboard" class="hidden min-h-screen flex flex-col">
+        <nav class="bg-blue-900 text-white p-4 shadow-md flex justify-between items-center px-8">
+            <div class="text-xl font-bold flex items-center gap-2">
+                <i class="fas fa-cross text-emerald-400"></i> Eben-Jesus Bank
+            </div>
+            <button onclick="logout()" class="text-sm bg-blue-800 hover:bg-red-600 px-4 py-2 rounded transition">Logout</button>
+        </nav>
+
+        <main class="p-6 md:p-12 max-w-6xl mx-auto w-full">
+            <h2 class="text-2xl font-bold mb-6">Welcome back, <span class="text-emerald-600">User</span></h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-emerald-600 text-white p-6 rounded-2xl shadow-lg">
+                    <p class="text-emerald-100 text-sm uppercase tracking-wider">Total Balance</p>
+                    <h3 class="text-4xl font-bold mt-2">$12,450.80</h3>
+                    <p class="mt-4 text-xs opacity-80">Account: **** 4421</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-200 md:col-span-2">
+                    <h4 class="font-bold mb-4">Quick Actions</h4>
+                    <div class="flex gap-4">
+                        <button class="flex-1 bg-slate-100 hover:bg-emerald-50 p-4 rounded-xl text-center transition border border-transparent hover:border-emerald-200">
+                            <i class="fas fa-paper-plane text-emerald-600 mb-2 text-xl"></i>
+                            <p class="text-sm font-medium">Send Money</p>
+                        </button>
+                        <button class="flex-1 bg-slate-100 hover:bg-emerald-50 p-4 rounded-xl text-center transition border border-transparent hover:border-emerald-200">
+                            <i class="fas fa-file-invoice-dollar text-emerald-600 mb-2 text-xl"></i>
+                            <p class="text-sm font-medium">Pay Bills</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 bg-white rounded-2xl shadow-md overflow-hidden border border-slate-200">
+                <div class="p-6 border-b border-slate-100">
+                    <h4 class="font-bold">Recent Transactions</h4>
+                </div>
+                <table class="w-full text-left">
+                    <thead class="bg-slate-50 text-slate-500 text-sm">
+                        <tr>
+                            <th class="p-4 font-semibold">Description</th>
+                            <th class="p-4 font-semibold">Date</th>
+                            <th class="p-4 font-semibold">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr>
+                            <td class="p-4">Apple Subscription</td>
+                            <td class="p-4 text-slate-500 text-sm">Oct 24, 2023</td>
+                            <td class="p-4 font-bold text-red-500">-$14.99</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4">Salary Deposit</td>
+                            <td class="p-4 text-slate-500 text-sm">Oct 22, 2023</td>
+                            <td class="p-4 font-bold text-emerald-600">+$3,200.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simple JavaScript to handle the "Login" click
+        const loginForm = document.getElementById('login-form');
+        const loginPage = document.getElementById('login-page');
+        const dashboard = document.getElementById('dashboard');
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Stop page from refreshing
+            
+            // In a real app, you would check the password here. 
+            // For now, we just switch screens:
+            loginPage.classList.add('hidden');
+            dashboard.classList.remove('hidden');
+        });
+
+        function logout() {
+            dashboard.classList.add('hidden');
+            loginPage.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
